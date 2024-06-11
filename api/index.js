@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 
 const authRoute = require("./routes/auth")
+const examRoute = require("./routes/exam")
 dotenv.config();
 
 
@@ -30,6 +31,7 @@ mongoose.connect(
 
 // Auth route path
 app.use('/auth', authRoute)
+app.use('/exam', examRoute)
 
 //ROUTE NOT FOUND
 app.use((req, res, next) => {
