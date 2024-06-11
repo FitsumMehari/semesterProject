@@ -1,9 +1,23 @@
 const express = require("express");
 
+
 const PORT = 3000;
 const app = express();
 app.use(express.json());
 
+// Database connector code
+mongoose.connect(
+    process.env.MONGODB_URL
+
+).then(
+    () => {
+        console.log("DB connected successfully!");
+    }
+).catch(
+    (error) => {
+        console.log(error);
+    }
+)
 
 //ROUTE NOT FOUND
 app.use((req, res, next) => {
