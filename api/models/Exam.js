@@ -9,7 +9,7 @@ const ExamSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    Questions: [{
+    questions: [{
         question: String,
         choices: {
             a: String,

@@ -26,7 +26,7 @@ router.post('/:userId', verifyTokenAndAuthorization, async(req, res, next) => {
         const newExam = new Exam({
             courseName: req.body.courseName,
             examTitle: req.body.examTitle,
-            Questions: req.body.questions,
+            questions: req.body.questions,
         })
 
         const savedExam = await newExam.save();
