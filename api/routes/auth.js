@@ -32,7 +32,7 @@ router.post('/register', async(req, res, next) => {
 
 
 //LOGIN
-router.post('/login', async(req, res) => {
+router.post('/login', async(req, res, next) => {
     if (!req.body.email || !req.body.password) {
         res.status(400).json("Please fill the required inputs!")
     } else {
