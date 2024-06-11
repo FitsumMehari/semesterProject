@@ -12,7 +12,6 @@ const app = express();
 
 
 app.use(express.json());
-const authRoute = require("./routes/auth")
 
 
 // Database connector code
