@@ -6,7 +6,7 @@ const md5 = require("md5");
 
 dotenv.config();
 
-// const User = require('../models/User');
+const User = require('../models/User');
 
 
 //REGISTER USER
