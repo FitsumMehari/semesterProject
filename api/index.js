@@ -1,9 +1,17 @@
 const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const mongoose = require('mongoose');
+dotenv.config();
 
 
 const PORT = 3000;
 const app = express();
+
+
 app.use(express.json());
+const authRoute = require("./routes/auth")
+
 
 // Database connector code
 mongoose.connect(
