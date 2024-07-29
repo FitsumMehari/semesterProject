@@ -1,0 +1,21 @@
+.form {
+    /* width: 60%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    overflow-y: scroll;
+    -ms-overflow-style: none !important;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none !important;
+    /* Firefox */
+}
+
+.form::-webkit-scrollbar {
+    display: none !important;
+}
+
+form {
+    /* border: 1px solid red; */
+    margin-top: 1rem;
+}

@@ -1,0 +1,12 @@
+.form {
+    /* width: 60%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+form {
+    /* border: 1px solid red; */
+    margin-top: 1rem;
+}

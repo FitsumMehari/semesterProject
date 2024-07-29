@@ -1,0 +1,103 @@
+<div class="page">
+    <h5>
+        Field Of Study: <span>{{ selectedExam.fieldofstudy }}</span>
+    </h5>
+    <h4>
+        Exam Title: <span>{{ selectedExam.examTitle }}</span>
+    </h4>
+    <h5>
+        Last Updated At: <span>{{ selectedExam.updatedAt | date }}</span>
+    </h5>
+
+    <p>
+        When you are ready to take the mock exam click on any exam of your choice from below.
+    </p>
+
+    <div class="row">
+        <ul class="col">
+            <li *ngFor="let exam of exams">
+                <a (click)="selectExam(exam._id)" class="btn btn-link">{{
+          exam.examTitle
+        }}</a>
+
+                <button *ngIf="checkAdmin()" (click)="deleteExam(exam._id)" class="btn btn-warning">
+          Delete
+        </button>
+            </li>
+        </ul>
+        <div class="col">
+            <div *ngFor="let question of selectedExam.questions">
+                <h6>{{ question.question }}</h6>
+                <div *ngFor="let choice of question.choices | keyvalue">
+                    <div id="{{ question._id + choice.key }}" (click)="
+              select(
+                choice.key,
+                question.answer,
+                question._id + choice.key,
+                question._id + 'answer'
+              )
+            ">
+                        <input name="{{ question._id }}" type="radio" />
+                        <span>{{ choice.key }}. {{ choice.value }}</span>
+                    </div>
+                </div>
+                <p class="hidden" id="{{ question._id + 'answer' }}">
+                    Correct answer: {{ question.answer }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="checkAdmin()" class="row">
+        <form #questionForm="ngForm" (ngSubmit)="addQuestion(questionForm)">
+            <h2>Add Exam</h2>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text " id="question" class="form-control" [(ngModel)]="newQuestion.question" name="question" />
+                <label class="form-label" for="question">question</label>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text " id="choiceA " class="form-control" [(ngModel)]="newQuestion.choices.a" name="chocies.a" />
+                <label class="form-label" for="choiceA ">chocie A</label>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text " id="choiceB " class="form-control" [(ngModel)]="newQuestion.choices.b" name="choices.b" />
+                <label class="form-label" for="choiceB ">chocie B</label>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text " id="choiceC " class="form-control" [(ngModel)]="newQuestion.choices.c" name="choices.c" />
+                <label class="form-label" for="choiceC ">choice C</label>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text " id="choiceD " class="form-control" [(ngModel)]="newQuestion.choices.d" name="choices.d" />
+                <label class="form-label" for="choiceD ">choice D</label>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text " id="answer " class="form-control" [(ngModel)]="newQuestion.answer" name="answer " />
+                <label class="form-label" for="answer ">correct answer</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit " data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+        Save Question
+      </button>
+        </form>
+        <form #examForm="ngForm" class="col" (ngSubmit)="saveExam(examForm)">
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text " id="title " class="form-control" [(ngModel)]="newExam.examTitle" name="examTitle " />
+                <label class="form-label" for="title ">title</label>
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text " id="fieldofsudy " class="form-control" [(ngModel)]="newExam.fieldofstudy" name="fieldofstudy " />
+                <label class="form-label" for="fieldofsudy ">fieldofstudy</label>
+            </div>
+
+            <button class="btn btn-primary">Save Exam</button>
+        </form>
+    </div>
+</div>

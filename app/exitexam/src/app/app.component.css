@@ -1,0 +1,29 @@
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    /* color: rgb(26, 76, 119); */
+    margin: 0 2rem;
+}
+
+
+/* nav {
+    display: flex;
+    justify-content: space-between;
+} */
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+li,
+.profile {}
+
+a {
+    text-decoration: none;
+    color: rgb(85, 140, 211);
+}

@@ -1,0 +1,50 @@
+<div class="form">
+    <!-- Pills content -->
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+            <form #registerForm="ngForm" (ngSubmit)="registerUser()">
+                <h2>Sign Up</h2>
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-1">
+                    <input type="email" id="emailInput" class="form-control" [(ngModel)]="user.email" name="email" />
+                    <label class="form-label" for="emailInput">Email</label>
+                </div>
+
+                <!-- Username input -->
+                <div data-mdb-input-init class="form-outline mb-1">
+                    <input type="text" id="usernameInput" class="form-control" [(ngModel)]="user.username" name="username" />
+                    <label class="form-label" for="usernameInput">Username</label>
+                </div>
+
+                <!-- Field input -->
+                <select class="form-select" id="fieldofstudy" aria-label="Default select example" [(ngModel)]="user.fieldofstudy" name="fieldofstudy">
+          <option selected>Select your field</option>
+          <option value="Electrical and Computer Engineering">Electrical and Computer Engienering</option>
+          <option value="Civil Engineering">Civil Engineering</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+        </select>
+                <label class="form-label mb-3" for="fieldofstudy">Field of study</label>
+
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline mb-1">
+                    <input type="password" id="passwordInput" class="form-control" [(ngModel)]="user.password" name="password" />
+                    <label class="form-label" for="passwordInput">Password</label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+          Sign up
+        </button>
+
+                <!-- Register buttons -->
+                <div class="text-center">
+                    <p>
+                        Already have an account? <a [routerLink]="['/sign-in']">Login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!-- Pills content -->
+</div>
