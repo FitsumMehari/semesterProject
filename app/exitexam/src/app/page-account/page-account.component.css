@@ -1,0 +1,20 @@
+.page {
+    margin-top: 20px;
+}
+
+.profile-pic {
+    /* border: 1px solid red; */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-pic>img {
+    height: 100%;
+}
+
+.profile-details {
+    /* border: 1px solid red; */
+    height: 100%;
+}

@@ -1,23 +1,27 @@
-<div class="page">
-    <h2>
-        Welcome <span class="text-primary">{{ getName() }}</span>
-    </h2>
-    <h3>Your Profile:</h3>
-    <h4>
-        account: <span class="text-secondary">{{ getUserType() }}</span>
-    </h4>
-    <h4>
-        username: <span class="text-secondary">{{ getName() }}</span>
-    </h4>
-    <h4>
-        user Id: <span class="text-secondary">{{ getId() }}</span>
-    </h4>
-    <h4>
-        email: <span class="text-secondary">{{ getEmail() }} </span>
-    </h4>
-    <h4 *ngIf="!!getFieldOfStudy()">
-        fieldofstudy: <span class="text-secondary">{{ getFieldOfStudy() }} </span>
-    </h4>
+<div class="page row">
+    <div class="col profile-pic">
+        <img class="img-fluid rounded-circle" src="profile.jfif" alt="">
+    </div>
+    <div class="col profile-details">
+        <p class="h2 text-secondary">
+            Welcome
+        </p>
+        <p class="display-6 text-secondary ">
+            account: <span class=" text-primary ">{{ getUserType() }}</span>
+        </p>
+        <p class="display-6 text-secondary ">
+            username: <span class="text-primary ">{{ getName() }}</span>
+        </p>
+        <p class="display-6 text-secondary ">
+            user Id: <span class="text-primary ">{{ getId() }}</span>
+        </p>
+        <p class="display-6 text-secondary ">
+            email: <span class="text-primary ">{{ getEmail() }} </span>
+        </p>
+        <p class="display-6 text-secondary " *ngIf="!!getFieldOfStudy() ">
+            fieldofstudy: <span class="text-primary ">{{ getFieldOfStudy() }} </span>
+        </p>
 
-    <button class=" btn btn-warning" (click)="logout()">Log out</button>
+        <button class="btn btn-warning " (click)="logout() ">Log out</button>
+    </div>
 </div>
