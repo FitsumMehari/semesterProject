@@ -1,27 +1,29 @@
-<div class="page row">
-    <div class="col profile-pic">
-        <img class="img-fluid rounded-circle" src="profile.jfif" alt="">
-    </div>
-    <div class="col profile-details">
-        <p class="h2 text-secondary">
-            Welcome
-        </p>
-        <p class="display-6 text-secondary ">
-            account: <span class=" text-primary ">{{ getUserType() }}</span>
-        </p>
-        <p class="display-6 text-secondary ">
-            username: <span class="text-primary ">{{ getName() }}</span>
-        </p>
-        <p class="display-6 text-secondary ">
-            user Id: <span class="text-primary ">{{ getId() }}</span>
-        </p>
-        <p class="display-6 text-secondary ">
-            email: <span class="text-primary ">{{ getEmail() }} </span>
-        </p>
-        <p class="display-6 text-secondary " *ngIf="!!getFieldOfStudy() ">
-            fieldofstudy: <span class="text-primary ">{{ getFieldOfStudy() }} </span>
-        </p>
+<div class="container page">
+    <div class="content">
+        <div class="col profile-details">
+            <p class="h2 text-secondary">
+                Welcome
+            </p>
+            <p class="display-6 text-secondary ">
+                account: <span class=" text-primary ">{{ user.userType }}</span>
+            </p>
+            <p class="display-6 text-secondary ">
+                username: <span class="text-primary ">{{ user.username }}</span>
+            </p>
+            <p class="display-6 text-secondary ">
+                user Id: <span class="text-primary ">{{ user.id }}</span>
+            </p>
+            <p class="display-6 text-secondary ">
+                email: <span class="text-primary ">{{ user.email }} </span>
+            </p>
+            <p class="display-6 text-secondary " *ngIf="!!user.fieldofstudy ">
+                fieldofstudy: <span class="text-primary ">{{ user.fieldofstudy }} </span>
+            </p>
 
-        <button class="btn btn-warning " (click)="logout() ">Log out</button>
+            <button class="btn btn-warning " (click)="logout() ">Log out</button>
+        </div>
+    </div>
+    <div class="banner">
+        <img class="banner-pic" src="profile.jfif" alt="">
     </div>
 </div>

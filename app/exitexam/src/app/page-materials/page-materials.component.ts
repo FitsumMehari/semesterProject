@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialService } from '../material.service';
+import { ManagetokenService } from '../managetoken.service';
+import { Subscription } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-page-materials',
@@ -7,7 +10,10 @@ import { MaterialService } from '../material.service';
   styleUrl: './page-materials.component.css',
 })
 export class PageMaterialsComponent implements OnInit {
-  constructor(private materialService: MaterialService) {}
+  constructor(
+    private materialService: MaterialService,
+    private tokenService: ManagetokenService
+  ) {}
 
   materials: any = [];
   material: any = {
@@ -15,31 +21,36 @@ export class PageMaterialsComponent implements OnInit {
     materialURL: '',
     fieldofstudy: '',
   };
-  isAdmin: boolean = false;
 
   ngOnInit(): void {
-    if (this.checkAdmin()) {
+    // this.subscription = this.tokenService.currentUser.subscribe(
+    //   (loggedUser) => (this.user = loggedUser)
+    // );
+
+    let token = localStorage.getItem('token');
+    if (!!token) {
+      this.user = jwtDecode(token);
+    } else {
+      this.subscription = this.tokenService.currentUser.subscribe(
+        (loggedUser) => (this.user = loggedUser)
+      );
+    }
+
+    if (this.user.isAdmin) {
       this.getAllMaterials();
     } else {
-      this.getMaterials();
+      this.getMaterials(this.user.fieldofstudy);
     }
   }
 
-  checkAdmin() {
-    let accountType = localStorage.getItem('userType');
-    if (accountType == 'admin') {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  subscription: Subscription | undefined;
 
-  getFieldOfStudy() {
-    return localStorage.getItem('fieldofstudy');
-  }
+  user: any = {};
+
+ 
 
   getAllMaterials() {
-    this.materialService.getAllMaterials().subscribe(
+    this.materialService.getAllMaterials(this.user.id).subscribe(
       (next) => {
         // this.materials = Object.assign({}, next);
         this.materials = next;
@@ -48,8 +59,8 @@ export class PageMaterialsComponent implements OnInit {
     );
   }
 
-  getMaterials() {
-    this.materialService.getMaterials().subscribe(
+  getMaterials(fieldofstudy:any) {
+    this.materialService.getMaterials(fieldofstudy).subscribe(
       (next) => {
         // this.materials = Object.assign({}, next);
         this.materials = next;

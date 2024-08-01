@@ -7,10 +7,8 @@ import { Injectable, OnInit } from '@angular/core';
 export class ExamService {
   constructor(private http: HttpClient) {}
 
-  getExams() {
-    const url = `http://localhost:3000/exam/:${localStorage.getItem(
-      'fieldofstudy'
-    )}`;
+  getExams(fieldofstudy:any) {
+    const url = `http://localhost:3000/exam/:${fieldofstudy}`;
     const httpOptions = {
       headers: new HttpHeaders({
         token: `token ${localStorage.getItem('token')}`,
@@ -20,8 +18,8 @@ export class ExamService {
     return this.http.get(url, httpOptions);
   }
 
-  getAllExams() {
-    const url = `http://localhost:3000/exam/:${localStorage.getItem('id')}`;
+  getAllExams(userId:any) {
+    const url = `http://localhost:3000/exam/:${userId}`;
     const httpOptions = {
       headers: new HttpHeaders({
         token: `token ${localStorage.getItem('token')}`,

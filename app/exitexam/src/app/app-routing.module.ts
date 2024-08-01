@@ -33,16 +33,25 @@ const routes: Routes = [
     component: PageLoginComponent,
   },
   {
+    path: 'home',
+    component: PageHomeComponent,
+  },
+  {
+    path: 'materials',
+    component: PageMaterialsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'exam',
+    component: PageExamComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
     path: 'profile',
     component: PageAccountComponent,
     canActivate: [AuthGuardService],
   },
-  {
-    path: 'home',
-    component: PageHomeComponent,
-  },
-  { path: 'materials', component: PageMaterialsComponent, canActivate: [AuthGuardService] },
-  { path: 'exam', component: PageExamComponent, canActivate: [AuthGuardService] },
+
   {
     path: '**',
     redirectTo: 'home',

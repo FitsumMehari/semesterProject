@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { ExamService } from '../exam.service';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ManagetokenService } from '../managetoken.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-page-exam',
@@ -11,7 +14,8 @@ export class PageExamComponent implements OnInit {
   constructor(
     private examService: ExamService,
     private elementRef: ElementRef,
-    private rendered: Renderer2
+    private rendered: Renderer2,
+    private tokenService: ManagetokenService
   ) {}
 
   exams: any = {};
@@ -21,12 +25,28 @@ export class PageExamComponent implements OnInit {
   isIncorrectApplied: any = false;
 
   ngOnInit(): void {
-    if (this.checkAdmin()) {
+    // this.subscription = this.tokenService.currentUser.subscribe(
+    //   (loggedUser) => (this.user = loggedUser)
+    // );
+
+    let token = localStorage.getItem('token');
+    if (!!token) {
+      this.user = jwtDecode(token);
+    } else {
+      this.subscription = this.tokenService.currentUser.subscribe(
+        (loggedUser) => (this.user = loggedUser)
+      );
+    }
+    if (this.user.isAdmin) {
       this.getAllExams();
     } else {
-      this.getExams();
+      this.getExams(this.user.fieldofstudy);
     }
   }
+
+  subscription: Subscription | undefined;
+
+  user: any = {};
 
   newExam: any = {
     examTitle: '',
@@ -45,19 +65,8 @@ export class PageExamComponent implements OnInit {
     answer: '',
   };
 
-  isAdmin: boolean = false;
-
-  checkAdmin() {
-    let accountType = localStorage.getItem('userType');
-    if (accountType == 'admin') {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  getExams() {
-    this.examService.getExams().subscribe(
+  getExams(fieldofstudy:any) {
+    this.examService.getExams(fieldofstudy).subscribe(
       (next) => {
         this.exams = next;
         console.log(this.exams);
@@ -67,7 +76,7 @@ export class PageExamComponent implements OnInit {
   }
 
   getAllExams() {
-    this.examService.getAllExams().subscribe(
+    this.examService.getAllExams(this.user.id).subscribe(
       (next) => {
         // this.Exams = Object.assign({}, next);
         this.exams = next;

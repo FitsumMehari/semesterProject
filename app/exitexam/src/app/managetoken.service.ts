@@ -1,19 +1,43 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
+import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ManagetokenService {
+export class ManagetokenService implements OnInit {
+  constructor() {
 
-  constructor() { }
-
-  saveToken(token: any) {
-    localStorage.setItem('token', token)
   }
 
-  getToken(key:any) {
-    return localStorage.getItem(key)
+  subscription: Subscription | undefined;
+
+  ngOnInit(): void {
+    let token = localStorage.getItem('token');
+    if (!!token) {
+      this.user = jwtDecode(token);
+    } else {
+      this.subscription = this.currentUser.subscribe(
+        (loggedUser) => (this.user = loggedUser)
+      );
+    }
   }
 
-  
+  user = {
+    id: '',
+    isAdmin: false,
+    email: '',
+    username: '',
+    userType: '',
+    fieldofstudy: '',
+    isLoggedIn: false,
+  };
+  // authenticated$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  private userSource = new BehaviorSubject(this.user);
+  currentUser = this.userSource.asObservable();
+
+  changeUser(userDetails: any) {
+    this.userSource.next(userDetails);
+  }
 }

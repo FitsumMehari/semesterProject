@@ -1,9 +1,26 @@
+.page {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 4rem;
+    /* color: rgb(13, 0, 128); */
+}
+
+.form,
+.banner {
+    max-width: 40%;
+}
+
+.form::-webkit-scrollbar {
+    display: none !important;
+}
+
 .form {
     /* width: 60%; */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid red; */
+    width: 100%;
     overflow-y: scroll;
     -ms-overflow-style: none !important;
     /* Internet Explorer 10+ */
@@ -11,11 +28,50 @@
     /* Firefox */
 }
 
-.form::-webkit-scrollbar {
-    display: none !important;
+.banner-pic {
+    max-height: 25rem;
 }
 
-form {
-    /* border: 1px solid red; */
-    margin-top: 1rem;
+input {
+    width: 21rem;
+    color: rgb(13, 0, 128);
+    border: .1rem solid blue none !important;
+    outline: none !important;
+    /* border: 0.1rem solid blue; */
+    /* outline: 0.1rem solid blue; */
+}
+
+input:active,
+input:enabled {
+    border: 0.1rem solid blue;
+    outline: 0.1rem solid blue;
+}
+
+select:enabled {
+    /* border: 0.1rem solid rgba(0, 0, 255, 0.6); */
+    outline: 0.1rem solid rgba(0, 0, 255, 0.8);
+}
+
+.form-outline {
+    width: 100%;
+    border: 1px solid blue;
+}
+
+label,
+p,
+a {
+    letter-spacing: .05rem;
+}
+
+a {
+    color: blue;
+}
+
+p {
+    color: black;
+}
+
+.h2 {
+    color: rgb(13, 0, 128);
+    font-weight: 700;
 }

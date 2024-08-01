@@ -7,10 +7,8 @@ import { Injectable } from '@angular/core';
 export class MaterialService {
   constructor(private http: HttpClient) {}
 
-  getMaterials() {
-    const url = `http://localhost:3000/material/:${localStorage.getItem(
-      'fieldofstudy'
-    )}`;
+  getMaterials(fieldofstudy:any) {
+    const url = `http://localhost:3000/material/:${fieldofstudy}`;
     const httpOptions = {
       headers: new HttpHeaders({
         token: `token ${localStorage.getItem('token')}`,
@@ -20,8 +18,8 @@ export class MaterialService {
     return this.http.get(url, httpOptions);
   }
 
-  getAllMaterials() {
-    const url = `http://localhost:3000/material/:${localStorage.getItem('id')}`;
+  getAllMaterials(userId:any) {
+    const url = `http://localhost:3000/material/:${userId}`;
     const httpOptions = {
       headers: new HttpHeaders({
         token: `token ${localStorage.getItem('token')}`,

@@ -1,72 +1,29 @@
-<div class="page">
-    <div *ngIf="!checkAdmin()">
-        <h5>
-            Field Of Study: <span>{{ getFieldOfStudy() }}</span>
-        </h5>
-        <ul>
-            <li *ngFor="let material of materials">
-                <a href="{{ material.materialURL }}" class="btn btn-link">{{
-          material.title
-        }}</a>
-                <div *ngIf="checkAdmin()">
-                    <button class="btn btn-info">Edit</button>
-                    <button class="btn btn-warning">Delete</button>
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <!-- add material -->
-
-    <div class="row" *ngIf="checkAdmin()">
-        <form #loginForm="ngForm" (ngSubmit)="addMaterial()">
-            <h2>Add New Material</h2>
-
-            <div data-mdb-input-init class="form-outline mb-4">
-                <input type="text " id="title " class="form-control" [(ngModel)]="material.title" name="title" />
-                <label class="form-label" for="title ">Title</label>
-            </div>
-
-            <div data-mdb-input-init class="form-outline mb-4">
-                <input type="text " id="fieldofstudy" class="form-control" [(ngModel)]="material.fieldofstudy" name="fieldofstudy" />
-                <label class="form-label" for="fieldofstudy">Field of study</label>
-            </div>
-
-            <div data-mdb-input-init class="form-outline mb-4">
-                <input type="text " id="materialURL" class="form-control" [(ngModel)]="material.materialURL" name="materialURL" />
-                <label class="form-label" for="materialURL">URL</label>
-            </div>
-
-            <!-- Submit button -->
-            <button type="submit " data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
-        Add
-      </button>
-        </form>
-    </div>
-
-    <div class="row" *ngIf="checkAdmin()">
-        <!-- get all -->
-        <div class="col">
+<div class="container page">
+    <div class="content">
+        <div *ngIf="!user.isAdmin">
+            <p class="h1">
+                Field Of Study: <span>{{ user.fieldofstudy }}</span>
+            </p>
             <ul>
                 <li *ngFor="let material of materials">
-                    <h4>Title: {{ material.title }}</h4>
-                    <h5>Field of study: {{ material.fieldofstudy }}</h5>
-                    <h5>URL: {{ material.materialURL }}</h5>
-                    <div *ngIf="checkAdmin()">
-                        <button (click)="selectMaterial(material._id)" class="btn btn-info">
-              Edit
-            </button>
-                        <button (click)="deleteMaterial(material._id)" class="btn btn-warning">
-              Delete
-            </button>
+                    <a href="{{ material.materialURL }}" class="btn btn-link">{{
+          material.title
+        }}</a>
+                    <p>{{material.materialURL}}</p>
+
+                    <div *ngIf="user.isAdmin">
+                        <button class="btn btn-info">Edit</button>
+                        <button class="btn btn-warning">Delete</button>
                     </div>
                 </li>
             </ul>
         </div>
-        <!-- edit material -->
-        <div class="col">
-            <form #loginForm="ngForm" (ngSubmit)="saveMaterial()">
-                <h2>Edit Existing Material</h2>
+
+        <!-- add material -->
+
+        <div class="row" *ngIf="user.isAdmin">
+            <form #loginForm="ngForm" (ngSubmit)="addMaterial()">
+                <h2>Add New Material</h2>
 
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="text " id="title " class="form-control" [(ngModel)]="material.title" name="title" />
@@ -85,9 +42,59 @@
 
                 <!-- Submit button -->
                 <button type="submit " data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
-          Save
-        </button>
+        Add
+      </button>
             </form>
         </div>
+
+        <div class="row" *ngIf="user.isAdmin">
+            <!-- get all -->
+            <div class="col">
+                <ul>
+                    <li *ngFor="let material of materials">
+                        <h4>Title: {{ material.title }}</h4>
+                        <h5>Field of study: {{ material.fieldofstudy }}</h5>
+                        <h5>URL: {{ material.materialURL }}</h5>
+                        <div *ngIf="user.isAdmin">
+                            <button (click)="selectMaterial(material._id)" class="btn btn-info">
+              Edit
+            </button>
+                            <button (click)="deleteMaterial(material._id)" class="btn btn-warning">
+              Delete
+            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- edit material -->
+            <div class="col">
+                <form #loginForm="ngForm" (ngSubmit)="saveMaterial()">
+                    <h2>Edit Existing Material</h2>
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text " id="title " class="form-control" [(ngModel)]="material.title" name="title" />
+                        <label class="form-label" for="title ">Title</label>
+                    </div>
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text " id="fieldofstudy" class="form-control" [(ngModel)]="material.fieldofstudy" name="fieldofstudy" />
+                        <label class="form-label" for="fieldofstudy">Field of study</label>
+                    </div>
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text " id="materialURL" class="form-control" [(ngModel)]="material.materialURL" name="materialURL" />
+                        <label class="form-label" for="materialURL">URL</label>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit " data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+          Save
+        </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="banner">
+        <img class="banner-pic" src="banner.png" alt="">
     </div>
 </div>

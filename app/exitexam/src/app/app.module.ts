@@ -14,6 +14,7 @@ import { PageHomeComponent } from './page-home/page-home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { provideHttpClient } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { provideHttpClient } from '@angular/common/http';
     PageExamComponent,
     PageAccountComponent,
     PageHomeComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [provideHttpClient(), AuthService],

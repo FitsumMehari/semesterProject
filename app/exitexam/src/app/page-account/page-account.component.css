@@ -1,20 +1,38 @@
 .page {
-    margin-top: 20px;
-}
-
-.profile-pic {
-    /* border: 1px solid red; */
-    height: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    margin-top: 4rem !important;
+    color: rgb(13, 0, 128);
 }
 
-.profile-pic>img {
-    height: 100%;
+.content,
+.banner {
+    max-width: 40%;
 }
 
-.profile-details {
-    /* border: 1px solid red; */
-    height: 100%;
+.banner-pic {
+    max-height: 25rem;
+}
+
+.h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: solid;
+    padding-left: 0.5rem;
+    border-left: 6px solid rgb(13, 0, 128);
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-weight: 500;
+    margin-left: 1rem;
+    letter-spacing: .05rem;
+    font-size: 1rem;
+}
+
+button {
+    margin-left: 1rem;
+    /* background-color: rgb(13, 0, 128); */
 }

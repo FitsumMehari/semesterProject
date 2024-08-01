@@ -20,7 +20,7 @@
           exam.examTitle
         }}</a>
 
-                <button *ngIf="checkAdmin()" (click)="deleteExam(exam._id)" class="btn btn-warning">
+                <button *ngIf="user.isAdmin" (click)="deleteExam(exam._id)" class="btn btn-warning">
           Delete
         </button>
             </li>
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <div *ngIf="checkAdmin()" class="row">
+    <div *ngIf="user.isAdmin" class="row">
         <form #questionForm="ngForm" (ngSubmit)="addQuestion(questionForm)">
             <h2>Add Exam</h2>
 
