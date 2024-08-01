@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Observable } from 'rxjs';
 import { ManagetokenService } from '../managetoken.service';
@@ -14,7 +14,8 @@ export class PageLoginComponent {
   constructor(
     private authService: AuthService,
     private manageToken: ManagetokenService,
-    private router: Router
+    private router: Router,
+    private rendered: Renderer2
   ) {}
 
   user = {
@@ -22,15 +23,6 @@ export class PageLoginComponent {
     password: '',
   };
   loginUser() {
-    // this.authService.login(this.user).subscribe(
-    //   (next) => {
-    //     this.manageToken.saveToken(next.accessToken);
-    //     this.router.navigate(['/profile']);
-    //   },
-    //   (error) => {
-    //     alert('Wrong credentials');
-    //   }
-    // );
     this.authService.login(this.user).subscribe(
       (next) => {
         let userDetails = {
@@ -54,5 +46,16 @@ export class PageLoginComponent {
         this.user = { email: '', password: '' };
       }
     );
+  }
+
+  togglePassword(elementId: any) {
+  
+    let element = document.getElementById(elementId);
+
+    if (element?.getAttribute('type') == 'password') {
+      element.setAttribute('type', 'text');
+    } else if (element?.getAttribute('type') == 'text') {
+      element.setAttribute('type', 'password');
+    }
   }
 }

@@ -9,9 +9,17 @@
                     <label class="form-label" for="loginName ">Email</label>
                 </div>
 
-                <div class="mb-4">
-                    <input type="password " id="loginPassword " class="form-control" [(ngModel)]="user.password" name="password" />
-                    <label class="form-label" for="loginPassword ">Password</label>
+                <div class="mb-4" style="position: relative">
+                    <input type="password" id="passwordInput" class="form-control" [(ngModel)]="user.password" name="password " />
+                    <i class="far fa-eye" id="togglePassword" (click)="togglePassword('passwordInput')" style="
+              cursor: pointer;
+              position: absolute;
+              top: 0.6rem;
+              right: 0.7rem;
+              z-index: 100;
+            "></i>
+
+                    <label class="form-label" for="passwordInput ">Password</label>
                 </div>
 
                 <div class="row mb-4">
@@ -30,6 +38,6 @@
         </div>
     </div>
     <div class="banner">
-        <img class="banner-pic" src="banner.png" alt="" />
+        <img class="banner-pic" src="banner.png " alt=" " />
     </div>
 </div>

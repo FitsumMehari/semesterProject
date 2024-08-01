@@ -20,10 +20,19 @@ export class PageRegisterComponent {
   registerUser() {
     this.authService.register(this.user).subscribe(
       (next) => {
-        alert("Account Created Successfully!");
-        this.router.navigate(['sign-in'])
+        alert('Account Created Successfully!');
+        this.router.navigate(['sign-in']);
       },
       (error) => {}
     );
+  }
+  togglePassword(elementId: any) {
+    let element = document.getElementById(elementId);
+
+    if (element?.getAttribute('type') == 'password') {
+      element.setAttribute('type', 'text');
+    } else if (element?.getAttribute('type') == 'text') {
+      element.setAttribute('type', 'password');
+    }
   }
 }
