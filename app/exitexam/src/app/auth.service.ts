@@ -13,7 +13,6 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(user: any) {
-    // const url = 'http://localhost:3000/auth/register';
     const url = environment.apiURL + 'auth/register';
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -23,7 +22,6 @@ export class AuthService {
 
   login(user: any): Observable<any> {
 
-    // const url = 'http://localhost:3000/auth/login';
     const url = environment.apiURL + 'auth/login';
 
     const httpOptions = {
