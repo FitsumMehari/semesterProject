@@ -74,6 +74,11 @@ export class PageExamComponent implements OnInit {
     );
   }
 
+  savePdf() {
+    let examElement = document.getElementById("exam");
+    window.print()
+  }
+
   getAllExams() {
     this.examService.getAllExams(this.user.id).subscribe(
       (next) => {

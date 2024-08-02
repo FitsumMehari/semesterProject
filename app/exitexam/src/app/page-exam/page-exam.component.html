@@ -1,20 +1,21 @@
 <div class="page">
-    <h5>
-        Field Of Study: <span>{{ selectedExam.fieldofstudy }}</span>
-    </h5>
-    <h4>
-        Exam Title: <span>{{ selectedExam.examTitle }}</span>
-    </h4>
-    <h5>
-        Last Updated At: <span>{{ selectedExam.updatedAt | date }}</span>
-    </h5>
-
-    <p>
-        When you are ready to take the mock exam click on any exam of your choice from below.
-    </p>
+    <div class="exam-details">
+        <h5>
+            Field Of Study: <span>{{ selectedExam.fieldofstudy }}</span>
+        </h5>
+        <h4>
+            Exam Title: <span>{{ selectedExam.examTitle }}</span>
+        </h4>
+        <h5>
+            Last Updated At: <span>{{ selectedExam.updatedAt | date }}</span>
+        </h5>
+    </div>
 
     <div class="row">
         <ul class="col">
+            <p>
+                When you are ready to take the mock exam click on any exam of your choice from below.
+            </p>
             <li *ngFor="let exam of exams">
                 <a (click)="selectExam(exam._id)" class="btn btn-link">{{
           exam.examTitle
@@ -25,25 +26,33 @@
         </button>
             </li>
         </ul>
-        <div class="col">
-            <div *ngFor="let question of selectedExam.questions">
-                <h6>{{ question.question }}</h6>
-                <div *ngFor="let choice of question.choices | keyvalue">
-                    <div id="{{ question._id + choice.key }}" (click)="
+        <div class="col exam-section">
+            <p class="exam-placeholder-text" *ngIf="!selectedExam.questions">
+                Questions will appear here once you select an exam from the left.
+            </p>
+
+            <button (click)="savePdf()" *ngIf="selectedExam.questions" style="margin-bottom: 1rem;" class="btn btn-primary">Save as pdf</button>
+
+            <div class="exam" id="exam">
+                <div *ngFor="let questions of selectedExam.questions; let i = index">
+                    <h6>{{i + 1}}. {{ questions.question | titlecase}}</h6>
+                    <div *ngFor="let choice of questions.choices | keyvalue">
+                        <div class="choices" id="{{ questions._id + choice.key }}" (click)="
               select(
                 choice.key,
-                question.answer,
-                question._id + choice.key,
-                question._id + 'answer'
+                questions.answer,
+                questions._id + choice.key,
+                questions._id + 'answer'
               )
             ">
-                        <input name="{{ question._id }}" type="radio" />
-                        <span>{{ choice.key }}. {{ choice.value }}</span>
+                            <input class="radio-btn" name="{{ questions._id }}" type="radio" />
+                            <p class="choice">{{ choice.key }}. {{ choice.value }}</p>
+                        </div>
                     </div>
+                    <p class="hidden" id="{{ questions._id + 'answer' }}">
+                        Correct answer: {{ questions.answer }}
+                    </p>
                 </div>
-                <p class="hidden" id="{{ question._id + 'answer' }}">
-                    Correct answer: {{ question.answer }}
-                </p>
             </div>
         </div>
     </div>

@@ -9,3 +9,54 @@
 .hidden {
     visibility: hidden;
 }
+
+.exam-section {
+    /* border: 1px solid rgb(47, 0, 255); */
+    padding: 1rem;
+    background-color: rgba(230, 249, 211, 0.5);
+    border-radius: 1rem;
+    height: 64vh;
+    /* overflow: scroll;
+    scrollbar-width: none; */
+}
+
+.exam {
+    height: 100%;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.exam-placeholder-text {
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+}
+
+.choices {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.radio-btn {
+    cursor: pointer;
+}
+
+.choice {
+    letter-spacing: 0.1rem;
+    padding: 0.8rem 0 0 0.5rem;
+    cursor: pointer;
+}
+
+@media print {
+    .page {
+        visibility: hidden;
+    }
+    .exam {
+        visibility: visible;
+        position: absolute;
+        left: 0;
+    }
+    .exam-details {
+        visibility: visible;
+    }
+}
