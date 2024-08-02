@@ -33,9 +33,9 @@ mongoose
 // app.get("/", function(req, res) {
 //     res.sendFile(path.join(__dirname, "./index.html"));
 // });
-app.get("/", (req, res) => {
-    res.send("index.html");
-});
+// app.get("/", (req, res) => {
+//     res.send("index.html");
+// });
 // Auth route path
 app.use("/auth", authRoute);
 app.use("/exam", examRoute);

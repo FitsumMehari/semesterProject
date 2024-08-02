@@ -1,0 +1,38 @@
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    margin: 5rem;
+}
+
+img {
+    border-radius: 50%;
+    height: 8rem;
+}
+
+.profiles {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* border: 1px solid black; */
+}
+
+.profile {
+    margin: 0.5rem;
+    padding: 1.5rem 3rem;
+    /* border: 1px solid red; */
+    border-radius: 1rem;
+    background-color: rgba(230, 249, 211, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    letter-spacing: 0.1rem;
+}

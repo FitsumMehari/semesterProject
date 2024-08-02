@@ -1,4 +1,4 @@
-export const environment = {
+aboexport const environment = {
   production: true,
   apiURL: "/"
 };

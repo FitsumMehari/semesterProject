@@ -69,7 +69,6 @@ export class PageExamComponent implements OnInit {
     this.examService.getExams(fieldofstudy).subscribe(
       (next) => {
         this.exams = next;
-        console.log(this.exams);
       },
       (error) => {}
     );

@@ -39,7 +39,6 @@ export class MaterialService {
     const url = environment.apiURL + 'material/:';
 
     // const url = `http://localhost:3000/material/:${localStorage.getItem('id')}`;
-    console.log(material._id);
 
     const httpOptions = {
       headers: new HttpHeaders({

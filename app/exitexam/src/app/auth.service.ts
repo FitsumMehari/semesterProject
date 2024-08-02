@@ -22,11 +22,10 @@ export class AuthService {
   }
 
   login(user: any): Observable<any> {
-    
+
     // const url = 'http://localhost:3000/auth/login';
     const url = environment.apiURL + 'auth/login';
-    console.log(url);
-    
+
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };

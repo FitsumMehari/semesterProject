@@ -47,7 +47,7 @@ export class PageMaterialsComponent implements OnInit {
 
   user: any = {};
 
- 
+
 
   getAllMaterials() {
     this.materialService.getAllMaterials(this.user.id).subscribe(
@@ -87,7 +87,6 @@ export class PageMaterialsComponent implements OnInit {
   }
 
   addMaterial() {
-    console.log(this.material);
 
     this.materialService.addMaterial(this.material).subscribe(
       (next) => {
