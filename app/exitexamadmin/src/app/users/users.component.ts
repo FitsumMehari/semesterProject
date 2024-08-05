@@ -10,13 +10,26 @@ import { ManagetokenService } from '../managetoken.service';
   styleUrl: './users.component.css',
 })
 export class UsersComponent implements OnInit {
-  constructor(private userService: UserService, private tokenService: ManagetokenService) {}
+  constructor(
+    private userService: UserService,
+    private tokenService: ManagetokenService
+  ) {}
 
   subscription: Subscription | undefined;
 
   loggedUser: any = {};
 
+  newUser = {
+    isAdmin: false,
+    email: '',
+    username: '',
+    userType: '',
+    fieldofstudy: '',
+    password: '',
+  };
+
   users: any = [];
+
   user = {
     id: '',
     isAdmin: false,
@@ -37,10 +50,34 @@ export class UsersComponent implements OnInit {
       );
     }
 
-   
     this.userService.getAllUsers().subscribe(
       (next) => {
         this.users = next;
+      },
+      (error) => {}
+    );
+  }
+
+  addUser() {
+    this.newUser.isAdmin = this.newUser.userType == 'admin' ? true : false;
+    this.userService.addUser(this.newUser).subscribe(
+      (next) => {
+
+        alert("Success!")
+        this.newUser = {
+          isAdmin: false,
+          email: '',
+          username: '',
+          userType: '',
+          fieldofstudy: '',
+          password: '',
+        };
+        this.userService.getAllUsers().subscribe(
+          (next) => {
+            this.users = next;
+          },
+          (error) => {}
+        );
       },
       (error) => {}
     );

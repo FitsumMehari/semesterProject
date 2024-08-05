@@ -24,7 +24,7 @@ export class UserService {
   }
 
   getSingleUser(userId: any) {
-    const url = environment.apiURL + 'users/' + userId;
+    const url = environment.apiURL + 'user/' + userId;
 
     // const url = `http://localhost:3000/material/:${userId}`;
     const httpOptions = {
@@ -34,5 +34,15 @@ export class UserService {
     };
 
     return this.http.get(url, httpOptions);
+  }
+
+  addUser(user:any) {
+    const url = environment.apiURL + 'user/';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: `token ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this.http.post(url, user, httpOptions);
   }
 }

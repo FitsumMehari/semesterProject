@@ -3,7 +3,7 @@ const { verifyTokenAndAuthorization, verifyToken } = require("./verifyToken");
 
 const User = require("../models/User");
 
-// Get Materials
+// Get Users
 router.get("/:id", verifyToken, async(req, res, next) => {
 
     let id = req.params.id.split(":")[1];
@@ -40,17 +40,13 @@ router.put("/:userId", verifyToken, async(req, res, next) => {
     }
 });
 
-// Add Material
-router.post("/:userId", verifyToken, async(req, res, next) => {
+// Add User
+router.post("/", verifyToken, async(req, res, next) => {
     try {
-        const newMaterial = new Material({
-            fieldofstudy: req.body.fieldofstudy,
-            materialURL: req.body.materialURL,
-            title: req.body.title,
-        });
+        const newUser = new User(req.body);
 
-        const savedMaterial = await newMaterial.save();
-        res.status(201).json(savedMaterial);
+        const savedUser = await newUser.save();
+        res.status(201).json(savedUser);
     } catch (error) {
         next(error);
     }
