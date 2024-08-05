@@ -45,4 +45,24 @@ export class UserService {
     };
     return this.http.post(url, user, httpOptions);
   }
+
+  deleteUser(userId:any) {
+    const url = environment.apiURL + 'user/:' + userId;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: `token ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this.http.delete(url, httpOptions);
+  }
+
+  updateUser(user:any) {
+    const url = environment.apiURL + 'user/';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: `token ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this.http.put(url, user, httpOptions);
+  }
 }

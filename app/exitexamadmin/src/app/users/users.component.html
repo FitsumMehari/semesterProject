@@ -36,8 +36,8 @@
                     <td>{{user.fieldofstudy || "none"}}</td>
                     <td>{{user.userType}}</td>
                     <td>
-                        <i class="icon icon-edit fa fa-pencil "></i>
-                        <i class="icon icon-delete fa fa-trash "></i>
+                        <i (click)="selectUser(user._id)" class="icon icon-edit fa fa-pencil "></i>
+                        <i (click)="deleteUser(user._id)" class="icon icon-delete fa fa-trash "></i>
                     </td>
                 </tr>
 
@@ -84,9 +84,9 @@
 
 
 
-            <button type="submit " class="btn btn-primary btn-block mb-4 ">
-Add User
-</button>
+            <button type="submit" class="btn btn-primary btn-block mb-4 ">
+  {{buttonStatus}}
+  </button>
 
         </form>
     </div>

@@ -30,6 +30,9 @@ export class UsersComponent implements OnInit {
 
   users: any = [];
 
+  selectedUserId = ''
+
+
   user = {
     id: '',
     isAdmin: false,
@@ -40,6 +43,8 @@ export class UsersComponent implements OnInit {
     isLoggedIn: false,
   };
 
+  buttonStatus = "Add User"
+
   ngOnInit(): void {
     let token = localStorage.getItem('token');
     if (!!token) {
@@ -49,7 +54,7 @@ export class UsersComponent implements OnInit {
         (loggedUser) => (this.user = loggedUser)
       );
     }
-
+    // Refresh The List
     this.userService.getAllUsers().subscribe(
       (next) => {
         this.users = next;
@@ -59,11 +64,11 @@ export class UsersComponent implements OnInit {
   }
 
   addUser() {
-    this.newUser.isAdmin = this.newUser.userType == 'admin' ? true : false;
+    if (this.buttonStatus == "Add User") {
+      this.newUser.isAdmin = this.newUser.userType == 'admin' ? true : false;
     this.userService.addUser(this.newUser).subscribe(
       (next) => {
-
-        alert("Success!")
+        alert('Success!');
         this.newUser = {
           isAdmin: false,
           email: '',
@@ -81,5 +86,83 @@ export class UsersComponent implements OnInit {
       },
       (error) => {}
     );
+    } else if (this.buttonStatus == "Update User") {
+      this.updateUser(this.selectedUserId)
+    }
+  }
+
+  deleteUser(userId: any) {
+    this.users.forEach((user: any) => {
+      if (user._id == userId) {
+        let toDelete = confirm(
+          'Are you sure you want to delete ' + user.username + "'s account?"
+        );
+
+        if (toDelete) {
+          this.userService.deleteUser(userId).subscribe(
+            (next) => {
+              alert('User Account Deleted!');
+            },
+            (error) => {}
+          );
+        }
+      }
+    });
+    // Refresh The List
+    this.userService.getAllUsers().subscribe(
+      (next) => {
+        this.users = next;
+      },
+      (error) => {}
+    );
+  }
+
+  selectUser(userId: any) {
+    this.users.forEach((user: any) => {
+      if (user._id == userId) {
+        user.isAdmin = user.userType == 'admin' ? true : false;
+        this.selectedUserId = user._id;
+        this.newUser = user;
+
+        this.buttonStatus = "Update User"
+        // console.log(this.newUser);
+      }
+    });
+  }
+
+  updateUser(userId: any) {
+    this.users.forEach((user: any) => {
+      if (user._id == userId) {
+        let toUpdate = confirm(
+          'Are you sure you want to update ' + user.username + "'s account?"
+        );
+
+        if (toUpdate) {
+          this.userService.updateUser(user).subscribe(
+            (next) => {
+              alert('User Account Updated!');
+              this.newUser = {
+                isAdmin: false,
+                email: '',
+                username: '',
+                userType: '',
+                fieldofstudy: '',
+                password: '',
+              };
+              this.buttonStatus = "Add User"
+               // Refresh The List
+    this.userService.getAllUsers().subscribe(
+      (next) => {
+        this.users = next;
+      },
+      (error) => {}
+    );
+            },
+            (error) => {}
+          );
+        }
+      }
+    });
+
   }
 }

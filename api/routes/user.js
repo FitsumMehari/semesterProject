@@ -26,15 +26,11 @@ router.get("/:id", verifyToken, async(req, res, next) => {
     }
 });
 
-// Edit Material
-router.put("/:userId", verifyToken, async(req, res, next) => {
+// Update User
+router.put("/", verifyToken, async(req, res, next) => {
     try {
-        const material = await Material.findByIdAndUpdate(req.body._id, {
-            fieldofstudy: req.body.fieldofstudy,
-            materialURL: req.body.materialURL,
-            title: req.body.title,
-        });
-        res.status(200).json(material);
+        const user = await User.findByIdAndUpdate(req.body._id, req.body);
+        res.status(200).json(user);
     } catch (error) {
         next(error);
     }
@@ -52,11 +48,11 @@ router.post("/", verifyToken, async(req, res, next) => {
     }
 });
 
-// Delete Material
+// Delete User
 router.delete("/:id", verifyToken, async(req, res, next) => {
     _id = req.params.id.split(":")[1];
     try {
-        await Material.findByIdAndDelete(_id);
+        await User.findByIdAndDelete(_id);
         res.status(200).json({ message: "deleted" });
     } catch (error) {
         next(error);
