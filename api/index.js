@@ -18,6 +18,7 @@ app.use(express.json());
 const authRoute = require("./routes/auth");
 const examRoute = require("./routes/exam");
 const materialRoute = require("./routes/material");
+const userRoute = require("./routes/user");
 
 // Database connector code
 mongoose
@@ -40,6 +41,7 @@ mongoose
 app.use("/auth", authRoute);
 app.use("/exam", examRoute);
 app.use("/material", materialRoute);
+app.use("/user", userRoute);
 
 //ROUTE NOT FOUND
 app.use((req, res, next) => {
