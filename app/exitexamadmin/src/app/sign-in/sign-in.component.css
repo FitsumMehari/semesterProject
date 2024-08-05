@@ -1,0 +1,63 @@
+.page {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 4rem;
+    /* color: rgb(13, 0, 128); */
+}
+
+.form,
+.banner {
+    max-width: 40%;
+}
+
+.form {
+    /* width: 60%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.banner-pic {
+    max-height: 25rem;
+}
+
+input {
+    width: 21rem;
+    color: rgb(13, 0, 128);
+    border: .1rem solid blue none !important;
+    outline: none !important;
+    /* border: 0.1rem solid blue; */
+    /* outline: 0.1rem solid blue; */
+}
+
+input:active,
+input:enabled {
+    border: 0.1rem solid blue;
+    outline: 0.1rem solid blue;
+}
+
+.form-outline {
+    width: 100%;
+    border: 1px solid blue;
+}
+
+label,
+p,
+a {
+    letter-spacing: .05rem;
+}
+
+a {
+    color: blue;
+}
+
+p {
+    color: black;
+}
+
+.h2 {
+    color: rgb(13, 0, 128);
+    font-weight: 700;
+}
