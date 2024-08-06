@@ -34,57 +34,58 @@
                     <td>{{user.email}}</td>
                     <td>{{user._id}}</td>
                     <td>{{user.fieldofstudy || "none"}}</td>
-                    <td>{{user.userType}}</td>
+                    <td *ngIf="user.userType =='student'">{{user.userType}}</td>
+                    <td *ngIf="user.userType =='admin'" style="color: rgb(255, 0, 0);">{{user.userType}}</td>
                     <td>
-                        <i (click)="selectUser(user._id)" class="icon icon-edit fa fa-pencil "></i>
-                        <i (click)="deleteUser(user._id)" class="icon icon-delete fa fa-trash "></i>
+                        <i (click)="selectUser(user._id) " class="icon icon-edit fa fa-pencil "></i>
+                        <i (click)="deleteUser(user._id) " class="icon icon-delete fa fa-trash "></i>
                     </td>
                 </tr>
 
             </tbody>
         </table>
     </div>
-    <div class="add-user">
-        <form #addUserForm="ngForm" (ngSubmit)="addUser()">
-            <div class="row">
-                <div class="col mb-1">
-                    <label class="form-label" for="username">Email</label>
-                    <input type="email" id="email" class="form-control" name="email" [(ngModel)]="newUser.email" />
+    <div class="add-user ">
+        <form #addUserForm="ngForm" (ngSubmit)="addUser() ">
+            <div class="row ">
+                <div class="col mb-1 ">
+                    <label class="form-label " for="username ">Email</label>
+                    <input type="email " id="email " class="form-control " name="email " [(ngModel)]="newUser.email " />
                 </div>
-                <div class="col mb-1">
-                    <label class="form-label" for="username">Password</label>
-                    <input type="password" id="password" class="form-control" name="password" [(ngModel)]=" newUser.password " />
+                <div *ngIf="buttonStatus=='Add User' " class="col mb-1 ">
+                    <label class="form-label " for="username ">Password</label>
+                    <input type="password " id="password " class="form-control " name="password " [(ngModel)]=" newUser.password " />
                 </div>
             </div>
             <div class="row ">
                 <div class="col mb-1 ">
                     <label class="form-label " for="username ">Username</label>
-                    <input type="text" id="username" class="form-control" name="username" [(ngModel)]="newUser.username " />
+                    <input type="text " id="username " class="form-control " name="username " [(ngModel)]="newUser.username " />
                 </div>
                 <div class="col select ">
                     <label class="form-label " for="fieldofstudy ">Field of study</label>
                     <select class="form-select " id="fieldofstudy " aria-label="Default select example " name="fieldofstudy " [(ngModel)]="newUser.fieldofstudy ">
-              <option value="Electrical and Computer Engineering">
+              <option value="Electrical and Computer Engineering ">
                 Electrical and Computer Engienering
               </option>
-              <option value="Civil Engineering">Civil Engineering</option>
-              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering ">Civil Engineering</option>
+              <option value="Mechanical Engineering ">Mechanical Engineering</option>
             </select>
                 </div>
                 <div class="col select ">
                     <label class="form-label " for="userType ">User Type</label>
                     <select class="form-select " id="userType " aria-label="Default select example " name="userType " [(ngModel)]="newUser.userType ">
-            <option value="student">
+            <option value="student ">
               Student
             </option>
-            <option value="admin">Admin</option>
+            <option value="admin ">Admin</option>
           </select>
                 </div>
             </div>
 
 
 
-            <button type="submit" class="btn btn-primary btn-block mb-4 ">
+            <button type="submit " class="btn btn-primary btn-block mb-4 ">
   {{buttonStatus}}
   </button>
 
