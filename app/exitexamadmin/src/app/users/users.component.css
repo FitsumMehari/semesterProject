@@ -22,6 +22,9 @@ select {
 
 .table {
     margin-top: 1rem;
+    max-height: 8rem;
+    overflow: scroll;
+    scrollbar-width: none;
 }
 
 .icon {
