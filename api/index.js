@@ -19,6 +19,7 @@ const authRoute = require("./routes/auth");
 const examRoute = require("./routes/exam");
 const materialRoute = require("./routes/material");
 const adminUserRoute = require("./routes/admin-user");
+const adminMaterialRoute = require("./routes/admin-material");
 
 // Database connector code
 mongoose
@@ -42,6 +43,7 @@ app.use("/auth", authRoute);
 app.use("/exam", examRoute);
 app.use("/material", materialRoute);
 app.use("/admin-user", adminUserRoute);
+app.use("/admin-material", adminMaterialRoute);
 
 //ROUTE NOT FOUND
 app.use((req, res, next) => {
