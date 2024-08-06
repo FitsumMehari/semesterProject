@@ -14,6 +14,7 @@ import { ExamsComponent } from './exams/exams.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './auth.service';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AuthService } from './auth.service';
     ExamsComponent,
     SignInComponent,
     HomeComponent,
+    FilterPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideHttpClient(), AuthService],
