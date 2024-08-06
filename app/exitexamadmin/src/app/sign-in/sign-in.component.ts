@@ -24,6 +24,14 @@ export class SignInComponent {
   loginUser() {
     this.authService.login(this.user).subscribe(
       (next) => {
+        let token = {isAdmin: ''}
+        token = jwtDecode(next.accessToken);
+
+        if(!token.isAdmin) {
+          alert('Wrong credentials');
+          this.user = { email: '', password: '' };
+        } else if (token.isAdmin) {
+
         let userDetails = {
           id: '',
           isAdmin: false,
@@ -39,7 +47,7 @@ export class SignInComponent {
         this.authService.authenticated$.next(userDetails.isLoggedIn);
         this.manageToken.changeUser(userDetails);
         this.router.navigate(['home']);
-        // this.router.navigate(['home/overview']);
+        }
       },
       (error) => {
         alert('Wrong credentials');
