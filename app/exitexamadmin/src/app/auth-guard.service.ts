@@ -48,7 +48,7 @@ export class AuthGuardService implements CanActivate, OnInit {
       );
     }
 
-    if (this.user.isLoggedIn) {
+    if (this.user.isLoggedIn && this.user.isAdmin) {
       return true;
     } else {
       this.router.navigate(['/sign-in']);
