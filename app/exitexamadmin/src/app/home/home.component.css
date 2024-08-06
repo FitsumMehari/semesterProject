@@ -16,3 +16,7 @@
     justify-content: start;
     align-items: center;
 }
+
+.nav-bar {
+    width: 100%;
+}
