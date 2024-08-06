@@ -138,7 +138,8 @@ export class UsersComponent implements OnInit {
         );
 
         if (toUpdate) {
-          this.userService.updateUser(user).subscribe(
+          let {password, ...otherUserDetails} = user
+          this.userService.updateUser(otherUserDetails).subscribe(
             (next) => {
               alert('User Account Updated!');
               this.newUser = {
