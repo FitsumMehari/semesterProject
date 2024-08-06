@@ -2,7 +2,7 @@
     <div class="header">
         <p class="h3">Materials</p>
         <div class="mb-4 search-box" style="position: relative">
-            <input type="text" id="textInput" class="form-control" name=" " />
+            <input type="text" id="textInput" placeholder="Enter data to filter by" class="form-control" name="filterInput" [(ngModel)]="filterInput" />
             <i class="fa-solid fa-filter" style="
 cursor: pointer;
 position: absolute;
@@ -27,7 +27,7 @@ z-index: 100;
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let material of materials; let i = index">
+                <tr *ngFor="let material of materials |filter:filterInput; let i = index">
                     <th scope=" row ">{{i + 1}}</th>
                     <td>{{material.fieldofstudy}}</td>
                     <td>{{material.title}}</td>

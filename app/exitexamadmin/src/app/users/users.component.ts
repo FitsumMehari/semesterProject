@@ -17,6 +17,8 @@ export class UsersComponent implements OnInit {
 
   subscription: Subscription | undefined;
 
+  filterInput: any
+
   loggedUser: any = {};
 
   newUser = {

@@ -17,6 +17,8 @@ export class MaterialsComponent {
 
   subscription: Subscription | undefined;
 
+  filterInput:any
+  
   loggedUser: any = {};
 
   newMaterial = {
