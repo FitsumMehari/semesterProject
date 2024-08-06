@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const md5 = require("md5");
 const { verifyTokenAndAuthorization, verifyToken } = require("./verifyToken");
 
 const User = require("../models/User");
@@ -38,6 +39,7 @@ router.put("/", verifyToken, async(req, res, next) => {
 
 // Add User
 router.post("/", verifyToken, async(req, res, next) => {
+    req.body.password = md5(req.body.password);
     try {
         const newUser = new User(req.body);
 
