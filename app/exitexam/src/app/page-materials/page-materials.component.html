@@ -6,7 +6,7 @@
             </p>
             <ul>
                 <li *ngFor="let material of materials">
-                    <a href="{{ material.materialURL }}" class="btn btn-link">{{
+                    <a href="{{'http://'+ material.materialURL }}" target="_blank" class="btn btn-link">{{
           material.title
         }}</a>
                     <p>{{material.materialURL}}</p>
@@ -20,7 +20,7 @@
         </div>
 
         <!-- add material -->
-
+        <!--
         <div class="row" *ngIf="user.isAdmin">
             <form #loginForm="ngForm" (ngSubmit)="addMaterial()">
                 <h2>Add New Material</h2>
@@ -38,61 +38,61 @@
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="text " id="materialURL" class="form-control" [(ngModel)]="material.materialURL" name="materialURL" />
                     <label class="form-label" for="materialURL">URL</label>
-                </div>
+                </div> -->
 
-                <!-- Submit button -->
-                <button type="submit " data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+        <!-- Submit button -->
+        <!-- <button type="submit " data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
         Add
       </button>
-            </form>
-        </div>
+        </form>
+    </div> -->
 
-        <div class="row" *ngIf="user.isAdmin">
-            <!-- get all -->
-            <div class="col">
-                <ul>
-                    <li *ngFor="let material of materials">
-                        <h4>Title: {{ material.title }}</h4>
-                        <h5>Field of study: {{ material.fieldofstudy }}</h5>
-                        <h5>URL: {{ material.materialURL }}</h5>
-                        <div *ngIf="user.isAdmin">
-                            <button (click)="selectMaterial(material._id)" class="btn btn-info">
+        <!-- <div class="row" *ngIf="user.isAdmin"> -->
+        <!-- get all -->
+        <!-- <div class="col">
+            <ul>
+                <li *ngFor="let material of materials">
+                    <h4>Title: {{ material.title }}</h4>
+                    <h5>Field of study: {{ material.fieldofstudy }}</h5>
+                    <h5>URL: {{ material.materialURL }}</h5> -->
+        <!-- <div *ngIf="user.isAdmin">
+                        <button (click)="selectMaterial(material._id)" class="btn btn-info">
               Edit
             </button>
-                            <button (click)="deleteMaterial(material._id)" class="btn btn-warning">
+                        <button (click)="deleteMaterial(material._id)" class="btn btn-warning">
               Delete
             </button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- edit material -->
-            <div class="col">
-                <form #loginForm="ngForm" (ngSubmit)="saveMaterial()">
-                    <h2>Edit Existing Material</h2>
-
-                    <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="text " id="title " class="form-control" [(ngModel)]="material.title" name="title" />
-                        <label class="form-label" for="title ">Title</label>
                     </div>
+                </li>
+            </ul>
+        </div> -->
+        <!-- edit material -->
+        <!-- <div class="col">
+            <form #loginForm="ngForm" (ngSubmit)="saveMaterial()">
+                <h2>Edit Existing Material</h2>
 
-                    <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="text " id="fieldofstudy" class="form-control" [(ngModel)]="material.fieldofstudy" name="fieldofstudy" />
-                        <label class="form-label" for="fieldofstudy">Field of study</label>
-                    </div>
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text " id="title " class="form-control" [(ngModel)]="material.title" name="title" />
+                    <label class="form-label" for="title ">Title</label>
+                </div>
 
-                    <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="text " id="materialURL" class="form-control" [(ngModel)]="material.materialURL" name="materialURL" />
-                        <label class="form-label" for="materialURL">URL</label>
-                    </div>
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text " id="fieldofstudy" class="form-control" [(ngModel)]="material.fieldofstudy" name="fieldofstudy" />
+                    <label class="form-label" for="fieldofstudy">Field of study</label>
+                </div> -->
 
-                    <!-- Submit button -->
-                    <button type="submit " data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+        <!-- <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text " id="materialURL" class="form-control" [(ngModel)]="material.materialURL" name="materialURL" />
+                    <label class="form-label" for="materialURL">URL</label>
+                </div> -->
+
+        <!-- Submit button -->
+        <!-- <button type="submit " data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
           Save
-        </button>
-                </form>
-            </div>
-        </div>
+        </button> -->
+        <!-- </form> -->
+        <!-- </div> -->
+        <!-- </div> -->
     </div>
     <div class="banner">
         <img class="banner-pic" src="banner.png" alt="">
