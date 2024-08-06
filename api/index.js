@@ -41,7 +41,7 @@ mongoose
 app.use("/auth", authRoute);
 app.use("/exam", examRoute);
 app.use("/material", materialRoute);
-app.use("/user", userRoute);
+app.use("/admin-user", userRoute);
 
 //ROUTE NOT FOUND
 app.use((req, res, next) => {

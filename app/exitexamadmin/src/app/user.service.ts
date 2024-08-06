@@ -11,7 +11,7 @@ export class UserService {
 
   getAllUsers() {
 
-    const url = environment.apiURL + 'user/:all';
+    const url = environment.apiURL + 'admin-user/:all';
 
     // const url = `http://localhost:3000/material/:${userId}`;
     const httpOptions = {
@@ -24,7 +24,7 @@ export class UserService {
   }
 
   getSingleUser(userId: any) {
-    const url = environment.apiURL + 'user/' + userId;
+    const url = environment.apiURL + 'admin-user/' + userId;
 
     // const url = `http://localhost:3000/material/:${userId}`;
     const httpOptions = {
@@ -37,7 +37,7 @@ export class UserService {
   }
 
   addUser(user:any) {
-    const url = environment.apiURL + 'user/';
+    const url = environment.apiURL + 'admin-user/';
     const httpOptions = {
       headers: new HttpHeaders({
         token: `token ${localStorage.getItem('token')}`,
@@ -47,7 +47,7 @@ export class UserService {
   }
 
   deleteUser(userId:any) {
-    const url = environment.apiURL + 'user/:' + userId;
+    const url = environment.apiURL + 'admin-user/:' + userId;
     const httpOptions = {
       headers: new HttpHeaders({
         token: `token ${localStorage.getItem('token')}`,
@@ -57,7 +57,7 @@ export class UserService {
   }
 
   updateUser(user:any) {
-    const url = environment.apiURL + 'user/';
+    const url = environment.apiURL + 'admin-user/';
     const httpOptions = {
       headers: new HttpHeaders({
         token: `token ${localStorage.getItem('token')}`,
